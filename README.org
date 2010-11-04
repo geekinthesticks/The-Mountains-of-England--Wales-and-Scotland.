@@ -1,2 +1,39 @@
 * The Mountains of England Wales and Scotland.
-Nothing to read yet, just an initial push to init the repo.
+This project has been created with the aim of making information about
+the mountains of England, Wales and Scotland accessible to Open Source
+hackers.The statistical data has been derived from Chris Crocker and
+Graham Jackson’s site http://www.biber.fsnet.co.uk/index.html . They
+take all the credit for collating, checking and making the data
+available. I hope to keep the statistical information on this site
+synchronized with theirs. However, their data will always be the
+definitive source.
+
+* Objectives.
+The project has a number of objectives, which may well change over time!
+
+ - Maintain an up to date collection of the statistical data in formats that will be useful to other hackers.
+ - Provide the data in the form of an SQLite database.
+ - Develop a simple front end to allow sers to browse and edit the database. This will probably be written in Python.
+ - Develop a simple web application that people can run on their own
+servers to record details of their own ascents.
+
+
+** Requirements.
+The database comes with a couple of tools. In order to use them you
+will need a version of Python 2.5 or greater.
+
+*** dbcreate.py
+This script creates a new blank database. it refuses to run if the
+database already exists.
+
+*** db_import.py
+Imports data from the areas_4.csv and hills_4.csv files into a
+pre-existing database.
+
+Warning - any existing data will be deleted. make sure you back up
+your database before using this script.
+
+* The Database.
+If you just want to use the database, you only need ukhills.db. At
+present this has been loaded with data from hills_v11_v.mdb from Chris
+Crocker's site.

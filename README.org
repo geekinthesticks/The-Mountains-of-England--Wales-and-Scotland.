@@ -23,26 +23,43 @@ servers to record details of their own ascents.
 The database comes with a couple of tools. In order to use them you
 will need a version of Python 2.5 or greater.
 
-*** dbcreate.py
-This script creates a new blank database. it refuses to run if the
-database already exists.
+** Scripts to Create and Populate the SQLite Database.
+Please note that at the moment the relative paths to the databases and
+scv files are hard coded into the scripts. If you don't want to edit
+the scripts, make sure that you preserve the directory structure.
 
-*** db_import.py
+*** dbcreate.py
+This script creates a new blank non relational database. it refuses to
+run if the database already exists.
+
+*** dbimport.py
 Imports data from the areas_4.csv and hills_4.csv files into a
 pre-existing database.
 
 Warning - any existing data will be deleted. make sure you back up
 your database before using this script.
 
-* The Database.
-If you just want to use the database, you only need ukhills.db. At
-present this has been loaded with data from hills_v11_v.mdb from Chris
+*** create-relational_database.py
+This script creates a new blank relational database. it refuses to run if the
+database already exists.
+
+*** dbimportR.py
+Imports data from the areas_4R.csv, hills_4R.csv, classlink_4R.csv and
+arealink_4R.scv files into a pre-existing database.
+
+* The Databases.
+Field names and types correspond to those defined in Chris Crockers
+Access database.
+
+** Non Relational Database.
+The database ukhills.db has been loaded with data from hills_v11_4.mdb from Chris
 Crocker's site.
 
 ** Relational Database.
-The relational database corresponds to the Access version. However,
-only the tables relating to hill data are created. Tables for the
-users data in the Access database are not created in the SQLite version.
+The SQLIte relational database (hillsR.db) corresponds to the Access
+version. However, only the tables relating to hill data are
+created. Tables for the user's data in the Access database are not
+created in the SQLite version.
 
 Dates and times are stored as integers in Unix Time, which is the
 number of seconds since 1970-01-01 00:00:00 UTC.

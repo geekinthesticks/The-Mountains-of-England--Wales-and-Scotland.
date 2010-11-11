@@ -1,2 +1,10 @@
 * The Mountains of England Wales and Scotland.
 Nothing to read yet, just an initial push to init the repo.
+
+** Relational Database.
+The relational database corresponds to the Access version. However,
+only the tables relating to hill data are created. Tables for the
+users data in the Access database are not created in the SQLite version.
+
+Dates and times are stored as integers in Unix Time, which is the
+number of seconds since 1970-01-01 00:00:00 UTC.

@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS Areas
 curs.execute("""
 CREATE TABLE IF NOT EXISTS Hills
  (
-	Hillnumber			float (8), 
+	Hillnumber			bigint (8), 
 	_Section			float (8), 
 	Hillname			varchar (510), 
 	Section			varchar (510), 

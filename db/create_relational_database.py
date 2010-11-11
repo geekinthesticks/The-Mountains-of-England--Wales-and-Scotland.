@@ -21,114 +21,108 @@
 # will exit without doing anything. This is to prevent you overwriting
 # your existing database with a new empty one!
 
+# Creates a blank database corresponding to the relational
+# Access database.
+
 import sqlite3
 import os.path
 import sys
 
-if os.path.exists("ukhills.db"):
-    print "The database ukhills.db already exists!"
+if os.path.exists("ukhillsR.db"):
+    print "The database ukhillsR.db already exists!"
     print "Exiting without creating a new database."
     sys.exit(2)
 
-db = sqlite3.connect("ukhills.db")
+db = sqlite3.connect("ukhillsR.db")
 curs = db.cursor()
 
 curs.execute("""
 
-
-CREATE TABLE IF NOT EXISTS Areas
+CREATE TABLE IF NOT EXISTS Arealink
  (
-	Country			varchar (510), 
-	Arearef			varchar (510), 
-	Shortname			varchar (510), 
-	Areaname			varchar (510)
+	"Hillnumber"			Integer (2), 
+	"Arearef"			Text (510), 
+	"Alt_Area"			Boolean
 
 );
 
+"""
+)
 
+curs.execute("""
+
+CREATE TABLE IF NOT EXISTS Areas
+ (
+	"Country"			Text (510), 
+	"Arearef"			Text (510), 
+	"Shortname"			Text (510), 
+	"Areaname"			Text (510)
+
+);
+
+"""
+)
+
+
+curs.execute("""
+
+CREATE TABLE IF NOT EXISTS Class
+ (
+	"SortSeq"			Integer (2), 
+	"Classref"			Text (510), 
+	"Classname"			Text (510)
+
+);
 
 
 """
 )
 
 curs.execute("""
-CREATE TABLE IF NOT EXISTS Hills
+
+CREATE TABLE IF NOT EXISTS Classlink
  (
-	Hillnumber			bigint (8), 
-	_Section			float (8), 
-	Hillname			varchar (510), 
-	Section			varchar (510), 
-	Region			varchar (510), 
-	Area			varchar (510), 
-	Metres			float (8), 
-	Feet			float (8), 
-	Map			varchar (510), 
-	Map25			varchar (510), 
-	Gridref			varchar (510), 
-	Colgridref			varchar (510), 
-	Colheight			float (8), 
-	"Drop"			float (8), 
-	Gridref10			varchar (510), 
-	Feature			varchar (510), 
-	Observations			varchar (510), 
-	Survey			varchar (510), 
-	Climbed			date (8), 
-	Classification			varchar (510), 
-	Countyname			varchar (510), 
-	Revision			date (8), 
-	Comments			varchar (510), 
-	xcoord			float (8), 
-	ycoord			float (8), 
-	Latitude			float (8), 
-	Longitude			float (8), 
-	Streetmap			text, 
-	Getamap			text, 
-	Ma			char, 
-	sMa			char, 
-	xMa			char, 
-	twinMa			char, 
-	xsMa			char, 
-	M			char, 
-	MT			char, 
-	xMT			char, 
-	C			char, 
-	CTM			char, 
-	CTC			char, 
-	xC			char, 
-	xCT			char, 
-	G			char, 
-	GTM			char, 
-	GTC			char, 
-	GTG			char, 
-	sG			char, 
-	D			char, 
-	DT			char, 
-	xDT			char, 
-	Mur			char, 
-	sMur			char, 
-	Hew			char, 
-	sHew			char, 
-	N			char, 
-	xN			char, 
-	W			char, 
-	WO			char, 
-	BL			char, 
-	Dewey			char, 
-	x5			char, 
-	B			char, 
-	Hu			char, 
-	xHu			char, 
-	twinHu			char, 
-	Bg			char, 
-	T100			char, 
-	COH			char, 
-	COA			char, 
-	COU			char, 
-	CoL			char
+	"Hillnumber"			Integer (2), 
+	"Classref"			Text (510)
 
 );
+
+
 """
 )
+
+curs.execute("""
+
+CREATE TABLE IF NOT EXISTS Hills
+ (
+	"Hillnumber"			Integer (2), 
+	"Hillname"			Text (510), 
+	"_Section"			Double (8), 
+	"Classification"			Text (100), 
+	"Metres"			Double (8), 
+	"Feet"			Double (8), 
+	"Gridref"			Text (16), 
+	"Gridref10"			Text (28), 
+	"Colgridref"			Text (80), 
+	"Colheight"			Double (8), 
+	"Drop"			Double (8), 
+	"Feature"			Text (510), 
+	"Observations"			Text (510), 
+	"Survey"			Text (510), 
+	"Revision"			Long Integer (4), 
+	"Comments"			Text (510), 
+	"Map"			Text (30), 
+	"Map25"			Text (40), 
+	"Xcoord"			Long Integer (4), 
+	"Ycoord"			Long Integer (4), 
+	"Latitude"			Double (8), 
+	"Longitude"			Double (8)
+
+);
+
+"""
+)
+
 
 db.commit()
 db.close()
